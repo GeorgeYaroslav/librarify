@@ -1,0 +1,10 @@
+App\Form\Model\BookDto:
+    properties:
+        title:
+            - NotBlank: ~
+            - Length:
+                min: 3
+                max: 250
+                minMessage: 'El titulo debe contener {{ limit }} caracteres como minimo'
+                maxMessage: 'El titulo debe contener {{ limit }} caracteres como maximo'
+                allowEmptyString: false
