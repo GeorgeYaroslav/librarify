@@ -7,4 +7,7 @@ App\Entity\Book:
             groups: ['book']
 
         image:
-            groups: ['book']            
+            groups: ['book']   
+
+        categories:
+            groups: ['book']             

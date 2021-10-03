@@ -2,18 +2,18 @@
 namespace App\Serializer;
 
 use App\Entity\Book;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\HttpFoundation\UrlHelper;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class BookNormalizer implements ContextAwareNormalizerInterface
 {
-    private $router;
+    private $urlHelper;
     private $normalizer;
 
-    public function __construct(UrlGeneratorInterface $router, ObjectNormalizer $normalizer)
+    public function __construct(UrlHelper $urlHelper, ObjectNormalizer $normalizer)
     {
-        $this->router = $router;
+        $this->urlHelper = $urlHelper;
         $this->normalizer = $normalizer;
     }
 
@@ -24,9 +24,7 @@ class BookNormalizer implements ContextAwareNormalizerInterface
         // Here, add, edit, or delete some data:
         if(!empty($book->getImage())){
 
-        $data['image'] = $this->router->generateUrl('storage\default', [
-            'id' => $book->getImage(),
-        ], UrlGeneratorInterface::ABSOLUTE_PATH);
+        $data['image'] = $this->urlHelper->getAbsoluteUrl('/storage/default/'.$book->getImage());
     }	
 
         return $data;
