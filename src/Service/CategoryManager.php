@@ -20,6 +20,11 @@ class CategoryManager {
         $this->categoryRepository = $categoryRepository;
     }
 
+    public function findAll(): array
+    {
+        return $this->categoryRepository->findAll();
+    }
+
     public function find(int $id): ?Category
     {
         return $this->categoryRepository->find($id);

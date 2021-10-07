@@ -4,8 +4,15 @@ namespace App\Service;
 
 use App\Entity\Book;
 use App\Form\Model\BookDto;
+use App\Form\Model\CategoryDto;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\BookManager;
+use App\Service\CategoryManager;
+use App\Service\FileUploader;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Form\Type\BookFormType;
+
 
 class BookFormProcessor
 {
@@ -28,7 +35,7 @@ class BookFormProcessor
         $this->formFactoryInterface = $formFactoryInterface;
     }
 
-    public function __invoke(Book $book, Request $request)
+    public function __invoke(Book $book, Request $request): array
     {
 
 
@@ -57,7 +64,7 @@ class BookFormProcessor
 
         // Si el formulario nos es enviado entonces se muestra una bad request
         if (!$form->isSubmitted()) {
-            return new Response('', Response::HTTP_BAD_REQUEST);
+            return [null, 'Form is not submitted'];
         }
 
         // Si el formulario para todas las validaciones
@@ -85,7 +92,7 @@ class BookFormProcessor
                 if (!$originalCategories->contains($newCategoryDto)) {      
 
                     // Entonces tambien se busca dentro del repositorio, y si no, manda 0 como valor
-                    $category = $this->categoryRepository->find($newCategoryDto->id ?? 0);
+                    $category = $this->categoryManager->find($newCategoryDto->id ?? 0);
 
                     // Si la categoria submeteada no se encuentra en el repositorio
                     if (!$category) {
@@ -108,17 +115,16 @@ class BookFormProcessor
             // Se setea la imagen con la que llega del formulario
             if ($bookDto->base64Image) {
                 // Aqui se realiza el proceso de decodificacion
-                $filename = $fileUploader->uploadBase64File($bookDto->base64Image);
+                $filename = $this->fileUploader->uploadBase64File($bookDto->base64Image);
+                $book->setImage($filename);
             }
-            $book->setImage($filename);
-            // Se persiste la entidad book
-            $this->bookManager->persist($book);
             // Se hace un flush para guardarlo
-            $em->flush();
+            $this->bookManager->save($book);
             // Se refresca el entity manaager
             $this->bookManager->reload($book);
             // Se retorna un objeto libro
-            return $book;
+            return [$book, null];
         }
+        return [null, $form];
     }
 }

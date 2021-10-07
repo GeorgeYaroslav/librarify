@@ -97,7 +97,11 @@ final class Versions
   'symfony/proxy-manager-bridge' => 'v5.3.4@76e61f33f6a34a340bf6e02211214f466e8e1dba',
   'symfony/routing' => 'v5.3.7@be865017746fe869007d94220ad3f5297951811b',
   'symfony/runtime' => 'v5.3.4@685a4a5491e25c7f2dd251d8fcca583b427ff290',
+  'symfony/security-bundle' => 'v5.3.8@b755ed5d11685ba9aaa27b060250e5a57371f37f',
   'symfony/security-core' => 'v5.3.7@bd3a055d1092a46f6b6599bcda5a7624cd804cb1',
+  'symfony/security-csrf' => 'v5.3.4@94b533195cf7fb21f3fae8ce349861c6401d969e',
+  'symfony/security-guard' => 'v5.3.7@25f8d2a206505514a0ff14b16c4fb4e17a10cf18',
+  'symfony/security-http' => 'v5.3.8@d499ecde6f81de42e557514626d6d5c14c0bdb78',
   'symfony/serializer' => 'v5.3.4@f04e368e3cb35948550c7e95cc8918cb7e761c0c',
   'symfony/service-contracts' => 'v2.4.0@f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb',
   'symfony/stopwatch' => 'v5.3.4@b24c6a92c6db316fee69e38c80591e080e41536c',
@@ -147,10 +151,10 @@ final class Versions
   'symfony/maker-bundle' => 'v1.33.0@f093d906c667cba7e3f74487d9e5e55aaf25a031',
   'symfony/phpunit-bridge' => 'v5.3.7@2a1ff6e5a4521be1350bfce75784938e590d6342',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'symfony/polyfill-ctype' => '*@cc0722e76bed91b2a467720ca210ac58aab6ea70',
-  'symfony/polyfill-iconv' => '*@cc0722e76bed91b2a467720ca210ac58aab6ea70',
-  'symfony/polyfill-php72' => '*@cc0722e76bed91b2a467720ca210ac58aab6ea70',
-  '__root__' => 'dev-main@cc0722e76bed91b2a467720ca210ac58aab6ea70',
+  'symfony/polyfill-ctype' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
+  'symfony/polyfill-iconv' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
+  'symfony/polyfill-php72' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
+  '__root__' => 'dev-main@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
 );
 
     private function __construct()

@@ -20,6 +20,11 @@ class BookManager {
         $this->bookRepository = $bookRepository;
     }
 
+    public function findAll(): array
+    {
+        return $this->bookRepository->findAll();
+    }
+
     public function find(int $id): ?Book
     {
         return $this->bookRepository->find($id);
@@ -49,5 +54,13 @@ class BookManager {
     {
         $this->em->refresh($book);
         return $book;
+    }
+
+    public function delete(Book $book)
+    {
+
+        $this->em->remove($book);
+        $this->em->flush();
+
     }
 }
