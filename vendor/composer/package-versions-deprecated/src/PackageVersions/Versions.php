@@ -151,10 +151,10 @@ final class Versions
   'symfony/maker-bundle' => 'v1.33.0@f093d906c667cba7e3f74487d9e5e55aaf25a031',
   'symfony/phpunit-bridge' => 'v5.3.7@2a1ff6e5a4521be1350bfce75784938e590d6342',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'symfony/polyfill-ctype' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
-  'symfony/polyfill-iconv' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
-  'symfony/polyfill-php72' => '*@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
-  '__root__' => 'dev-main@b48181c4e2c3920e4232f730aeb6dab073e92fdd',
+  'symfony/polyfill-ctype' => '*@4d0bdfb467fa679a28c93f3a3e5fc11083cb97e1',
+  'symfony/polyfill-iconv' => '*@4d0bdfb467fa679a28c93f3a3e5fc11083cb97e1',
+  'symfony/polyfill-php72' => '*@4d0bdfb467fa679a28c93f3a3e5fc11083cb97e1',
+  '__root__' => 'dev-main@4d0bdfb467fa679a28c93f3a3e5fc11083cb97e1',
 );
 
     private function __construct()

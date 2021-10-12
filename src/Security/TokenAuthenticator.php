@@ -14,7 +14,13 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 class TokenAuthenticator extends AbstractGuardAuthenticator
 {
 
-    const TOKEN = 'LIBRARIFY';
+    private $appApiToken;
+
+    // Se crea una instancia del valor que se setea desde services
+
+    public function __construct(string $appApiToken){
+        $this->appApiToken = $appApiToken; 
+    }
 
     /**
      * Called on every request to decide if this authenticator should be
@@ -38,7 +44,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
     {   
 
-        if (self::TOKEN !== $credentials) {
+        if ($this->appApiToken !== $credentials) {
             // The token header was empty, authentication fails with HTTP Status
             // Code 401 "Unauthorized"
             return null;
